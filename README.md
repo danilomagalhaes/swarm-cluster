@@ -120,18 +120,6 @@ Deploy the stack with:
 
 ## Deploy Swarmprom Stack (Monitoring and Alert)
 
-**All environment variables discribed in this section must be set permanently to work correctly**
-
-* Set and export an ADMIN_USER environment variable:
-
->`export ADMIN_USER=admin`
-
-* Set and export an ADMIN_PASSWORD environment variable:
-
->`export ADMIN_PASSWORD=changethis`
-
-**If you have set the HASHED_PASSWORD and DOMAIN environment variables not permanently at the *Deploy Traefik Stack* step you will need to configure again using a persistent way**
-
 Using Portainer UI navigate to `Stacks > Add stack`. At `name` field type `swarmprom` and choose the `git Repository` option and fill the following fields.
 
 **Repository URL:**
