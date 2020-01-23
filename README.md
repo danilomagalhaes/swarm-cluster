@@ -118,6 +118,8 @@ So, make sure that your DNS records point portainer.`<your domain>` to one of th
 Deploy the stack with:
 >`docker stack deploy -c portainer.yml portainer`
 
+[Portainer Documentation](https://portainer.readthedocs.io/en/latest/deployment.html#declaring-the-docker-environment-to-manage-upon-deployment)
+
 ## Deploy Swarmprom Stack (Monitoring and Alert)
 
 Using Portainer UI navigate to `Stacks > Add stack`. At `name` field type `swarmprom` and choose the `git Repository` option and fill the following fields.
