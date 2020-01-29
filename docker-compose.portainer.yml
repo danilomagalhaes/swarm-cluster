@@ -16,8 +16,6 @@ services:
   portainer:
     image: portainer/portainer
     command: -H tcp://tasks.agent:9001 --tlsskipverify
-    ports:
-      - "8000:8000"
     volumes:
       - portainer_data:/data
     networks:
@@ -26,14 +24,11 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.backend=portainer
-        - traefik.port=9000
-        - traefik.frontend.rule=Host:portainer.${DOMAIN?Variable DOMAIN not set}
-        - traefik.docker.network=traefik-public
-        - traefik.tags=traefik-public
-        - traefik.redirectorservice.frontend.entryPoints=http
-        - traefik.redirectorservice.frontend.redirect.entryPoint=https
-        - traefik.webservice.frontend.entryPoints=https
+        - traefik.http.routers.portainer.rule=Host(`portainer.${DOMAIN?Variable DOMAIN not set}`)
+        - traefik.http.routers.portainer.tls=true
+        - traefik.http.routers.portainer.entrypoints=https
+        - traefik.http.routers.portainer.tls.certresolver=letsencryptresolver
+        - traefik.http.services.portainer.loadbalancer.server.port=9000
       mode: replicated
       replicas: 1
       placement:

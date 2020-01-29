@@ -102,7 +102,7 @@ Use openssl to generate the "hashed" version of the password and store it in an 
 **Deploy IT**
 
 Deploy the stack with:
->`docker stack deploy -c traefik-host.yml traefik-consul`
+>`docker stack deploy -c docker-compose.traefik.yml traefik`
 
 [Traefik Stack Documentation](https://github.com/tiangolo/blog-posts/tree/master/docker-swarm-mode-and-distributed-traefik-proxy-with-https)
 
@@ -116,7 +116,7 @@ You will acess the Portainer UI at portainer.`<your domain>`, e.g `portainer.sys
 So, make sure that your DNS records point portainer.`<your domain>` to one of the IPs of the cluster.
 
 Deploy the stack with:
->`docker stack deploy -c portainer.yml portainer`
+>`docker stack deploy -c docker-compose.portainer.yml portainer`
 
 [Portainer Documentation](https://portainer.readthedocs.io/en/latest/deployment.html#declaring-the-docker-environment-to-manage-upon-deployment)
 
@@ -125,7 +125,7 @@ Deploy the stack with:
 Using Portainer UI navigate to `Stacks > Add stack`. At `name` field type `swarmprom` and choose the `git Repository` option and fill the following fields.
 
 **Repository URL:**
->`https://github.com/stefanprodan/swarmprom`
+>`https://github.com/danilomagalhaes/swarmprom.git`
 
 **Repository reference:**
 >`refs/heads/master`
@@ -138,6 +138,5 @@ At `Environment variables` section add the following variables:
 >`ADMIN_USER=admin`  
 `ADMIN_PASSWORD=changethis`  
 `DOMAIN=sys.example.com`  
-`HASHED_PASSWORD=<output of openssl passwd -apr1 $PASSWORD>`
 
 [Swarmprom Documentation](https://github.com/stefanprodan/swarmprom)
